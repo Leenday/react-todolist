@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header'
+import Button from './components/Button'
+import Tasks from './components/Tasks'
 
-function App() {
+const App = () => {
+  const tasks = [
+    {
+      id: 1,
+      title: 'TItle',
+      description: 'Desc',
+      location: 'Location',
+      done: false
+    },
+    {
+      id: 2,
+      title: 'TItle2',
+      description: 'Desc2',
+      location: 'Location2',
+      done: false
+    }
+  ]
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header title='To Do List' />
+      <Button text='Добавить' color='moccasin' backgroundColor='black' />
+      <Tasks tasks={tasks} />
     </div>
   );
 }
