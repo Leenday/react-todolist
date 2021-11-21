@@ -1,5 +1,5 @@
-const Button = ({ text, color, backgroundColor, onDelete }) => {
-  return <button style={{ color, backgroundColor }} onClick={onDelete}>{text}</button>
+const Button = ({ text, color, backgroundColor, onClick }) => {
+  return <button style={{ color, backgroundColor }} onClick={onClick}>{text}</button>
 }
 
 export default Button

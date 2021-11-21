@@ -1,29 +1,33 @@
 import Header from './components/Header'
 import Button from './components/Button'
 import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
+import { tasksList } from './mockTasks.js'
+import { useState } from 'react'
 
 const App = () => {
-  const tasks = [
-    {
-      id: 1,
-      title: 'TItle',
-      description: 'Desc',
-      location: 'Location',
-      done: false
-    },
-    {
-      id: 2,
-      title: 'TItle2',
-      description: 'Desc2',
-      location: 'Location2',
-      done: false
-    }
-  ]
+  // создание/добавление таски
+  // const create
+  const addTask = (task) => {
+    const id = Date.now()
+    const newTask = { id, ...task }
+    setTasks([...tasks, newTask])
+  }
+
+  // редактирование массив тасок
+  // const update
+
+  // delete Task
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+  const [tasks, setTasks] = useState(tasksList);
   return (
     <div className="App">
       <Header title='To Do List' />
+      <AddTask onAdd={addTask} />
       <Button text='Добавить' color='moccasin' backgroundColor='black' />
-      <Tasks tasks={tasks} />
+      { tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} /> : 'You have no tasks'}
     </div>
   );
 }
